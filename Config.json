@@ -1,0 +1,124 @@
+{
+    "rest_server_params":
+    {
+        "port" : 9999,
+        "threads" : 1,
+        "connection_limit" : 3 
+    },
+    "device_connection_params":
+    {
+        "tds_ip_address" : "192.168.93.3",
+        "slave_id" : 3,
+        "request_period" : 15
+    },
+    "database_params":
+    {
+        "db_name" : "ups.db",
+        "table_name" : "ups_data",
+        "mode" : "continious",
+        "days_of_storage" : 30
+    },
+    "modbus_objects": [
+        {
+            "command_name" : "VOUT_SET",
+            "description" : "Output voltage set",
+            "action" : "reading",
+            "func_num" : 3,
+            "reg_addr" : "0x0020",
+            "reg_count" : 1,
+            "coeff" : 0.01,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "FAULT_STATUS",
+            "description" : "Abnormal status",
+            "action" : "reading",
+            "func_num" : 3,
+            "reg_addr" : "0x0040",
+            "reg_count" : 1,
+            "coeff" : 1.0,            
+            "handler" : "SmartHandlerFaultStatus"
+        },
+        {
+            "command_name" : "SYSTEM_STATUS",
+            "description" : "System status",
+            "action" : "reading",
+            "func_num" : 3,
+            "reg_addr" : "0x00C3",
+            "reg_count" : 1,
+            "coeff" : 1.0,            
+            "handler" : "SmartHandlerSystemStatus"
+        },        
+        {
+            "command_name" : "READ_VIN",
+            "description" : "Input voltage read value",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x0050",
+            "reg_count" : 1,
+            "coeff" : 0.1,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "READ_VOUT",
+            "description" : "Output voltage",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x0060",
+            "reg_count" : 1,
+            "coeff" : 0.01,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "READ_IOUT",
+            "description" : "Output current",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x0061",
+            "reg_count" : 1,
+            "coeff" : 0.01,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "READ_TEMPERATURE",
+            "description" : "Internal ambient temperature",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x0062",
+            "reg_count" : 1,
+            "coeff" : 0.1,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "READ_VBAT",
+            "description" : "Voltage of battery",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x00D3",
+            "reg_count" : 1,
+            "coeff" : 0.01,            
+            "handler" : "SmartHandlerAnalog"
+        },
+        {
+            "command_name" : "READ_IBAT",
+            "description" : "Charging or discharging current of battery",
+            "action" : "reading",
+            "func_num" : 4,
+            "reg_addr" : "0x00D4",
+            "reg_count" : 1,
+            "coeff" : 0.01,            
+            "handler" : "SmartHandlerAnalog"
+        },        
+        {
+            "command_name" : "CHG_STATUS",
+            "description" : "Charging status reporting",
+            "action" : "reading",
+            "func_num" : 3,
+            "reg_addr" : "0x00B8",
+            "reg_count" : 1,
+            "coeff" : 1.0,            
+            "handler" : "SmartHandlerChargingStatus"
+        }        
+     
+    ]
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=UpsService
+[Service]
+ExecStartPre=/bin/sleep 30
+WorkingDirectory=/opt/ups/
+ExecStart=/opt/ups/ups_service
+ExecReload=/opt/ups/ups_service
+TimeoutSec=300
+Restart=always
+[Install]
+WantedBy=multi-user.target

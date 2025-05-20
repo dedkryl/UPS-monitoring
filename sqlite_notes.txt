@@ -1,0 +1,40 @@
+
+
+https://sqlitebrowser.org/
+
+DB Browser for SQLite - Standard installer for 64-bit Windows
+https://github.com/sqlitebrowser/sqlitebrowser/releases/download/v3.13.1/DB.Browser.for.SQLite-v3.13.1-win64.msi
+
+
+between Sun May 18 18:26:00 2025 and Sun May 18 18:27:00 2025 + 03:00 MSK
+
+SELECT * from ups_data where rowid>1747592760 and rowid<1747592820
+
+Не удобно с временем. 
+
+SELECT timestamp, BTNC, CCM FROM ups_data WHERE timestamp BETWEEN '2025-05-19 17:13:01' AND '2025-05-19 17:14:49';
+
+//////////////////////
+
+SELECT * from ups_data where AC_FAIL='Abnormal AC range'
+
+ SELECT * from ups_data where AC_FAIL!='Abnormal AC range'
+
+ SELECT  timestamp, READ_IBAT, READ_VBAT from ups_data where READ_VIN='0'
+
+ ................................................................................................
+
+eugene@ubuntu22:~/.../last$ ./sqlite3 
+SQLite version 3.50.0 2025-05-08 16:18:18
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open ups.db
+sqlite> SELECT  timestamp, READ_IBAT, READ_VBAT from ups_data where READ_VIN='0';
+Sun May 18 18:28:35 2025
+|-0.31|13.08
+...
+Sun May 18 18:30:54 2025
+|-0.31|13.02
+sqlite> .exit
+eugene@ubuntu22:~/.../last$ 
